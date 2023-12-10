@@ -1,3 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter;
+}
+
+.login-bg {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.609), rgba(0, 0, 0, 0.5)),
+    url("https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/e861fc14-a9b4-46d3-aced-6b4b82256b49/MM-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+}
+
+@layer utilities {
+  .max-container {
+    @apply mx-auto max-w-[1440px] sm:py-6 py-3;
+  }
+}
