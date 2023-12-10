@@ -1,6 +1,6 @@
-#Planning
+# Planning
 
-#Netflix GPT
+# Netflix GPT
 
 - Create React App
 - Configured TailwindCSS
@@ -11,7 +11,7 @@
 - Form Validation
 - useRef Handler
 
-#Features
+# Features
 -Login / SignUp
     -Sign In / Sign Up Form
     -Redirect to Browsers
