@@ -3,7 +3,7 @@ import logo from "./../utils/logo.png";
 
 const Header = () => {
   return (
-    <div className="absolute inset-0 max-container">
+    <div className="absolute top-0 max-container">
       <img src={logo} alt="" className="w-48 h-18" />
     </div>
   );
