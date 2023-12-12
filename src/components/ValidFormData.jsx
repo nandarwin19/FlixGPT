@@ -1,17 +1,20 @@
-// // import React from "react";
+import React from "react";
 
-// // export const ValidFormData = (email, password) => {
-// //   const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
-// //     email
-// //   );
-// //   const isPasswordValid =
-// //     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
+export const ValidFormData = (email, password, name) => {
+  const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
+    email
+  );
+  const isPasswordValid =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
 
-// //   if (!isEmailValid) return "Email is not valid";
-// //   if (!isPasswordValid) return "Password is not valid";
+  const isNameValid = /\b([A-ZÀ-ÿ][-,a-z.' ]+[ ]*)+/.test(name);
 
-// //   return null;
-// // };
+  if (!isEmailValid) return "Email is not valid";
+  if (!isPasswordValid) return "Password is not valid";
+  if (isNameValid) return "Name is not valid";
+
+  return null;
+};
 
 // export const ValidFormData = (emailPhone, password) => {
 //   const errors = {};
@@ -52,34 +55,34 @@
 //   return Object.keys(errors).length === 0 ? null : errors;
 // };
 
-export const ValidFormData = (emailPhone, password) => {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const phoneRegex = /^[0-9]{10}$/;
+// export const ValidFormData = (emailPhone, password) => {
+//   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//   const phoneRegex = /^[0-9]{10}$/;
 
-  if (!emailRegex.test(emailPhone) && !phoneRegex.test(emailPhone)) {
-    return "Please enter a valid email address or phone number.";
-  }
+//   if (!emailRegex.test(emailPhone) && !phoneRegex.test(emailPhone)) {
+//     return "Please enter a valid email address or phone number.";
+//   }
 
-  if (!password) {
-    return "Password cannot be empty.";
-  }
+//   if (!password) {
+//     return "Password cannot be empty.";
+//   }
 
-  if (password.length < 8 || password.length > 16) {
-    return "Password must be between 8 and 16 characters.";
-  }
+//   if (password.length < 8 || password.length > 16) {
+//     return "Password must be between 8 and 16 characters.";
+//   }
 
-  if (!/(?=.*[a-z])/.test(password)) {
-    return "Password must contain at least one lowercase letter.";
-  }
+//   if (!/(?=.*[a-z])/.test(password)) {
+//     return "Password must contain at least one lowercase letter.";
+//   }
 
-  if (!/(?=.*[A-Z])/.test(password)) {
-    return "Password must contain at least one uppercase letter.";
-  }
+//   if (!/(?=.*[A-Z])/.test(password)) {
+//     return "Password must contain at least one uppercase letter.";
+//   }
 
-  if (!/(?=.*\d)/.test(password)) {
-    console.log("Password before error:", password); // Log the password for inspection
-    return "Password must contain at least one digit.";
-  }
+//   if (!/(?=.*\d)/.test(password)) {
+//     console.log("Password before error:", password); // Log the password for inspection
+//     return "Password must contain at least one digit.";
+//   }
 
-  return null; // No errors
-};
+//   return null; // No errors
+// };
