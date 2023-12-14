@@ -1,8 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
+import { addTrailerVideo } from "../utils/movieSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const VideoBackground = ({ movieId }) => {
-  const [trailerId, setTrailerId] = useState(null);
+  const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
+  const dispatch = useDispatch();
+  // const [trailerId, setTrailerId] = useState(null); We are using redux, so we don't need useState
+  //USING REDUX INSTEAD OF USESTATE
+
 
   //fetch trailer movie
   const getBackgroundVideo = async () => {
@@ -18,7 +25,8 @@ const VideoBackground = ({ movieId }) => {
     );
     const trailer = filterTrailer.length ? filterTrailer[0] : json.results[0]; // to prevent error
     console.log(trailer);
-    setTrailerId(trailer.key);
+    // setTrailerId(trailer.key);
+    dispatch(addTrailerVideo(trailer));
   };
 
   useEffect(() => {
@@ -30,7 +38,7 @@ const VideoBackground = ({ movieId }) => {
       <iframe
         width="560"
         height="315"
-        src={"https://www.youtube.com/embed/" + trailerId}
+        src={"https://www.youtube.com/embed/" + trailerVideo?.key}
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
