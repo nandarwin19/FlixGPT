@@ -44,4 +44,4 @@
 - Part 9: BugFix: Login and Logout advanced
 - Part 14: Creating your own Custom Hook
 - Part 16: Creating custom hook for trailer video
-
+- Part 17: Building VideoBackground

@@ -39,12 +39,12 @@ const Header = () => {
       }
     });
 
-    // Unsubscribe when component unmounts 
+    // Unsubscribe when component unmounts
     return () => unsubscribe();
   }, []);
 
   return (
-    <div className="w-full bg-gradient-to-b absolute top-0 from-black">
+    <div className="w-full bg-gradient-to-b absolute top-0 from-black z-10">
       <div className=" max-container flex items-center justify-between">
         <img src={logo} alt="" className="w-48 h-18" />
         <div className="flex">
