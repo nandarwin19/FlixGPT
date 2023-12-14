@@ -1,13 +1,25 @@
 import React, { useState, useRef } from "react";
 import { ValidFormData } from "./ValidFormData";
 import Header from "./Header";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import { addUsers } from "../utils/userSlice";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [isSignInForm, setSignInForm] = useState(true);
-  const emailPhone = useRef(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
   // const [name, setName] = useState("");
@@ -23,16 +35,71 @@ const Login = () => {
 
   const handleButtonClick = () => {
     const message = ValidFormData(
-      name.current.value,
-      emailPhone.current.value,
+      // name.current.value,
+      email.current.value,
       password.current.value
     );
     // console.log(message);
-    setError(message);
+    setErrorMessage(message);
 
     if (message) return;
 
-    // Sign In Sign Up Logic 
+    if (!isSignInForm) {
+      // Sign Up Logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL:
+              "https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg",
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUsers({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+
+              // console.log(user.photoURL); // This should log the photo URL if it is set
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      // Sign In Logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    }
   };
 
   return (
@@ -58,9 +125,9 @@ const Login = () => {
           <input
             className="flex placeholder:text-white/70 placeholder:text-sm bg-[#454545] py-2 px-4 rounded-sm"
             type="emailPhone"
-            ref={emailPhone}
+            ref={email}
             // onChange={handleEmail}
-            placeholder="Email address or phone number"
+            placeholder="Email address"
           />
           <input
             className="flex placeholder:text-white/70 placeholder:text-sm bg-[#454545] py-2 px-4 rounded-sm"
@@ -69,7 +136,7 @@ const Login = () => {
             // onChange={handlePassword}
             placeholder="Password"
           />
-          {error && <p className="text-red-600">{error}</p>}
+          {errorMessage && <p className="text-red-600">{errorMessage}</p>}
           <button
             onClick={handleButtonClick}
             className="w-full bg-[#ff1a1a] py-2 px-4 rounded-sm"
