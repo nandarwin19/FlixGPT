@@ -7,7 +7,7 @@ const MainContainer = () => {
 
   if (!movies) return;
   const mainMovie = movies[0]; // we will get the error bcz before fetch api, we will null, right? it means null[0]. so we get error. We must to add "if(!movies) return "
-  console.log(mainMovie);
+  // console.log(mainMovie);
 
   const { original_title, overview, id } = mainMovie;
 
