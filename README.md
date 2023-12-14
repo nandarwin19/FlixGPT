@@ -15,8 +15,10 @@
 - Create SignUp User Account
 - Implement Sign In user Api
 - Create Redux Store with userSlice
-  -Inplemented Sign Out
+- Inplemented Sign Out
 - Update Profile
+- BugFix: Sign up user displayName and profile picture update
+- BugFix: if the user is not logged in Redirect /browse to Login Page and vice-verse
 
 # Features
 
@@ -33,3 +35,6 @@
 - NetflixGPT
   - Search Bar
   - Movie Suggestions
+
+
+- Part 9:  BugFix: Login and Logout advanced

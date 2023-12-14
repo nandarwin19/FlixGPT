@@ -1,23 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "./../utils/logo.png";
 import { auth } from "../utils/firebase";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { addUsers, removeUsers } from "../utils/userSlice";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
 
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        navigate("/");
       })
       .catch((error) => {
         navigate("/error");
       });
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUsers({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        dispatch(removeUsers());
+        navigate("/");
+      }
+    });
+  }, []);
+
   return (
     <div className="w-full bg-gradient-to-b absolute top-0 from-black">
       <div className=" max-container flex items-center justify-between">
