@@ -37,8 +37,10 @@
     - Movie Suggestions
       - MovieLists \* N
 - NetflixGPT
+
   - Search Bar
   - Movie Suggestions
 
+- Part 9: BugFix: Login and Logout advanced
+- Part 14: Creating your own Custom Hook
 
-- Part 9:  BugFix: Login and Logout advanced
