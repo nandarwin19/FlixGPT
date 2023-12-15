@@ -4,11 +4,15 @@ import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import usePopularMovies from "../hooks/usePopularMovies";
+import useTrendingMovies from "../hooks/useTrendingMovie";
+import useUpcomingMovies from "../hooks/useUpcomingMovies";
 
 //We got 2 api. That is because of React.StrictMode. But for only local ( while developing )
 const Browse = () => {
   useNowPlayingMovies();
   usePopularMovies();
+  useTrendingMovies();
+  useUpcomingMovies();
 
   return (
     <div>
