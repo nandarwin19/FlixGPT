@@ -38,6 +38,9 @@
 - Made the Broowse page amazing with Tailwind CSS
 - usePopularMovies Custom hook
 - GPT Search Feature
+- GPT Search Bar
+- Multi-language Features in app
+- Ingegrate GPT API
 
 # Features
 
