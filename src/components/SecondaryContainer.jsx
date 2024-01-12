@@ -1,6 +1,7 @@
 import React from "react";
 import MovieList from "./MovieList";
 import { useSelector } from "react-redux";
+import Footer from "./Footer";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
@@ -21,6 +22,7 @@ const SecondaryContainer = () => {
           />
           <MovieList title={"Horror"} movieLists={movies.nowPlayingMovies} />
         </div>
+        <Footer />
       </div>
     )
   );
