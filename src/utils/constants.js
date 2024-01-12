@@ -23,4 +23,4 @@ export const SUPPORTED_LANGUAGES = [
 ];
 
 export const OPENAI_GPT_KEY =
-  "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";
+  "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";

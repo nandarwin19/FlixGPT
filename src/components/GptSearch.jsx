@@ -6,8 +6,12 @@ import { GPTBG } from "../utils/constants";
 const GptSearch = () => {
   return (
     <div>
-      <div className="absolute -z-20">
-        <img src={GPTBG} alt="bg" />
+      <div className="absolute min-h-screen w-full -z-20">
+        <img
+          src={GPTBG}
+          alt="bg"
+          className="relative min-h-screen object-cover h-full"
+        />
       </div>
       <GptSearchBar />
       <GptMovieSuggestion />

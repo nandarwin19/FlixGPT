@@ -10,6 +10,7 @@ import { toggleGptSearchView } from "../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
 import { togglePopover } from "../utils/signoutSlice";
+import { IoSearch } from "react-icons/io5";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -64,14 +65,14 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full bg-gradient-to-b absolute top-0 from-black z-10">
+    <div className="w-full bg-gradient-to-b absolute top-0 from-black z-50 p-4 lg:p-0">
       <div className=" max-container flex items-center justify-between">
-        <img src={logo} alt="" className="w-48 h-18" />
+        <img src={logo} alt="" className="w-18 h-8 lg:w-48 lg:h-18" />
 
         <div className="flex gap-4">
           {showGptSearch && (
             <select
-              className="p-2 bg-white text-black"
+              className="p-1 text-[11px] md:p-2 md:text-[14px] bg-white text-black"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -83,9 +84,18 @@ const Header = () => {
           )}
           <button
             onClick={handleGptSearchClick}
-            className="px-3 py-2 bg-red-600 rounded text-white"
+            className="w-18 p-1 lg:px-3 lg:py-2 bg-red-600 rounded text-white"
           >
-            {showGptSearch ? "Homepage" : "GPT Search"}
+            <p className="text-[12px] lg:text-[16px]">
+              {showGptSearch ? (
+                "Homepage"
+              ) : (
+                // <div className="flex items-center justify-center gap-2 bg-[#fff]">
+                <div className="flex items-center justify-center gap-2">
+                  <IoSearch /> <p>search</p>
+                </div>
+              )}
+            </p>
           </button>
           <div className="relative">
             {user && (
@@ -94,13 +104,13 @@ const Header = () => {
                 // src={user.photoURL}
                 alt="usericon"
                 onClick={popOverChange}
-                className="w-12 h-12 rounded-full object-cover p-[1px] shadow-xl bg-white"
+                className="w-8 h-8 lg:w-12 lg:h-12 rounded-full object-cover p-[1px] shadow-xl bg-white"
               />
             )}
             {popoverBox && (
               <button
                 onClick={handleSignOut}
-                className="absolute font-bold text-white w-40 h-20 bg-red-600 rounded-lg top-0 -left-44"
+                className="absolute font-bold text-black w-40 h-20 bg-white rounded-md top-0 -left-44"
               >
                 Sign Out
               </button>
