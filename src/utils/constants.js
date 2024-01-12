@@ -21,3 +21,6 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "burmese", name: "Burmese" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const OPENAI_GPT_KEY =
+  "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";

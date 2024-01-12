@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./../utils/logo.png";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
@@ -15,6 +15,7 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const [popover, setPopover] = useState(false);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -57,6 +58,10 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   };
 
+  const popOverChange = () => {
+    setPopover(!popover);
+  };
+
   return (
     <div className="w-full bg-gradient-to-b absolute top-0 from-black z-10">
       <div className=" max-container flex items-center justify-between">
@@ -77,21 +82,29 @@ const Header = () => {
           )}
           <button
             onClick={handleGptSearchClick}
-            className="p-2 bg-red-600 rounded-lg text-white"
+            className="px-3 py-2 bg-red-600 rounded text-white"
           >
             {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
-          {user && (
-            <img
-              // src="https://i.pinimg.com/564x/5b/50/e7/5b50e75d07c726d36f397f6359098f58.jpg"
-              src={user.photoURL}
-              alt="usericon"
-              className="w-12 h-12"
-            />
-          )}
-          <button onClick={handleSignOut} className="font-bold text-white">
-            (Sign Out)
-          </button>
+          <div className="relative">
+            {user && (
+              <img
+                src="https://i.pinimg.com/564x/5b/50/e7/5b50e75d07c726d36f397f6359098f58.jpg"
+                // src={user.photoURL}
+                alt="usericon"
+                onClick={popOverChange}
+                className="w-12 h-12 rounded-full object-cover p-[1px] shadow-xl bg-white"
+              />
+            )}
+            {popover ? (
+              <button
+                onClick={handleSignOut}
+                className="absolute font-bold text-white w-40 h-20 bg-red-600 rounded-lg top-0 -left-44"
+              >
+                Sign Out
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
