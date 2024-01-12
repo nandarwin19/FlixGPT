@@ -3,7 +3,7 @@ import userReducer from "./userSlice";
 import moviesReducer from "./movieSlice";
 import gptReducer from "./gptSlice";
 import configReducer from "./configSlice";
-// import signoutReducer from "./signoutSlice"
+import signoutReducer from "./signoutSlice";
 
 const appStore = configureStore({
   reducer: {
@@ -11,7 +11,7 @@ const appStore = configureStore({
     movies: moviesReducer,
     gpt: gptReducer,
     config: configReducer,
-    // signout: signoutReducer,
+    signout: signoutReducer,
   },
 });
 

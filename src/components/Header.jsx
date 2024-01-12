@@ -9,13 +9,14 @@ import { useDispatch } from "react-redux";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
+import { togglePopover } from "../utils/signoutSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
-  const [popover, setPopover] = useState(false);
+  const popoverBox = useSelector((store) => store.signout.popoverBox);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -59,7 +60,7 @@ const Header = () => {
   };
 
   const popOverChange = () => {
-    setPopover(!popover);
+    dispatch(togglePopover());
   };
 
   return (
@@ -96,14 +97,14 @@ const Header = () => {
                 className="w-12 h-12 rounded-full object-cover p-[1px] shadow-xl bg-white"
               />
             )}
-            {popover ? (
+            {popoverBox && (
               <button
                 onClick={handleSignOut}
                 className="absolute font-bold text-white w-40 h-20 bg-red-600 rounded-lg top-0 -left-44"
               >
                 Sign Out
               </button>
-            ) : null}
+            )}
           </div>
         </div>
       </div>
