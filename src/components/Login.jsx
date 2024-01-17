@@ -104,7 +104,7 @@ const Login = () => {
       <div className="login-bg flex items-center justify-center">
         <form
           onSubmit={formHandle}
-          className="w-88 h-auto bg-black/70 text-white p-12 gap-8 flex flex-col"
+          className="max-w-sm h-auto bg-black/70 text-white p-12 gap-8 flex flex-col"
         >
           <h1 className="text-2xl font-bold">
             {isSignInForm ? "Sign In" : "Sign Up"}
@@ -115,21 +115,21 @@ const Login = () => {
               type="text"
               placeholder="Your name"
               ref={name}
-              // onChange={handleName}
+              value="Yooo"
             />
           )}
           <input
             className="flex placeholder:text-white/70 placeholder:text-sm bg-[#454545] py-2 px-4 rounded-sm"
             type="emailPhone"
             ref={email}
-            // onChange={handleEmail}
+            value="Yoo@gmail.com"
             placeholder="Email address"
           />
           <input
             className="flex placeholder:text-white/70 placeholder:text-sm bg-[#454545] py-2 px-4 rounded-sm"
             type="password"
             ref={password}
-            // onChange={handlePassword}
+            value="Yoo@gmail.com1"
             placeholder="Password"
           />
           {errorMessage && <p className="text-red-600">{errorMessage}</p>}

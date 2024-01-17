@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from "./../utils/logo.png";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { addUsers, removeUsers } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
@@ -25,6 +25,7 @@ const Header = () => {
       .catch((error) => {
         navigate("/error");
       });
+    dispatch(togglePopover(false));
   };
 
   useEffect(() => {
@@ -67,7 +68,9 @@ const Header = () => {
   return (
     <div className="w-full bg-gradient-to-b absolute top-0 from-black z-50 p-4 lg:p-0">
       <div className=" max-container flex items-center justify-between">
-        <img src={logo} alt="" className="w-18 h-8 lg:w-48 lg:h-18" />
+        <Link to="/browse">
+          <img src={logo} alt="" className="w-18 h-8 lg:w-48 lg:h-18" />
+        </Link>
 
         <div className="flex gap-4">
           {showGptSearch && (
@@ -104,13 +107,13 @@ const Header = () => {
                 // src={user.photoURL}
                 alt="usericon"
                 onClick={popOverChange}
-                className="w-8 h-8 lg:w-12 lg:h-12 rounded-full object-cover p-[1px] shadow-xl bg-white"
+                className="cursor-pointer w-8 h-8 lg:w-12 lg:h-12 rounded-full object-cover p-[1px] shadow-xl bg-white"
               />
             )}
             {popoverBox && (
               <button
                 onClick={handleSignOut}
-                className="absolute font-bold text-black w-40 h-20 bg-white rounded-md top-0 -left-44"
+                className="absolute font-bold text-black w-44 shadow-2xl h-24 mr-2 bg-white rounded-xl top-0 -left-44"
               >
                 Sign Out
               </button>
