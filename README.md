@@ -1,5 +1,5 @@
 ## Todo 
-- shimmers ui animation effect
+- shimmer ui animation effect
 - loading processing button
 
 # Planning
