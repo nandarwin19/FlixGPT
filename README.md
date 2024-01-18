@@ -1,7 +1,3 @@
-## Todo 
-- shimmer ui animation effect
-- loading processing button
-
 # Planning
 
 # Netflix GPT
