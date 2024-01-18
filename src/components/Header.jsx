@@ -66,7 +66,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full bg-gradient-to-b absolute top-0 from-black z-50 p-4 lg:p-0">
+    <div className="w-full fixed  top-0 z-50 p-4 lg:p-0">
       <div className=" max-container flex items-center justify-between">
         <Link to="/browse">
           <img src={logo} alt="" className="w-18 h-8 lg:w-48 lg:h-18" />
@@ -87,13 +87,12 @@ const Header = () => {
           )}
           <button
             onClick={handleGptSearchClick}
-            className="w-18 p-1 lg:px-3 lg:py-2 bg-red-600 rounded text-white"
+            className="w-18 p-1 lg:px-3 lg:py-2 bg-red-600 rounded text-white cursor-pointer"
           >
             <p className="text-[12px] lg:text-[16px]">
               {showGptSearch ? (
                 "Homepage"
               ) : (
-                // <div className="flex items-center justify-center gap-2 bg-[#fff]">
                 <div className="flex items-center justify-center gap-2">
                   <IoSearch /> <p>search</p>
                 </div>
@@ -113,7 +112,7 @@ const Header = () => {
             {popoverBox && (
               <button
                 onClick={handleSignOut}
-                className="absolute font-bold text-black w-44 shadow-2xl h-24 mr-2 bg-white rounded-xl top-0 -left-44"
+                className="absolute cursor-pointer font-bold text-black w-44 shadow-2xl h-24 mr-2 bg-white rounded-xl top-0 -left-44"
               >
                 Sign Out
               </button>

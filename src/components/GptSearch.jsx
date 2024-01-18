@@ -2,6 +2,7 @@ import React from "react";
 import GptSearchBar from "./GptSearchBar";
 import GptMovieSuggestion from "./GptMovieSuggestion";
 import { GPTBG } from "../utils/constants";
+import Footer from "./Footer";
 
 const GptSearch = () => {
   return (
@@ -10,11 +11,12 @@ const GptSearch = () => {
         <img
           src={GPTBG}
           alt="bg"
-          className="relative min-h-screen object-cover h-full"
+          className="fixed object-cover w-full h-full"
         />
       </div>
       <GptSearchBar />
       <GptMovieSuggestion />
+      <Footer />
     </div>
   );
 };
