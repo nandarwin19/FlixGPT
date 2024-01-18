@@ -75,7 +75,7 @@ const Header = () => {
         <div className="flex gap-4">
           {showGptSearch && (
             <select
-              className="p-1 text-[11px] md:p-2 md:text-[14px] bg-white text-black"
+              className="p-1 text-[11px] hidden md:flex md:p-2 md:text-[14px] bg-white text-black"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
