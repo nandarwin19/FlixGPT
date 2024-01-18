@@ -10,6 +10,7 @@ const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
   const searchText = useRef(null);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const searchMovieTMDB = async (movie) => {
     const data = await fetch(
@@ -21,6 +22,7 @@ const GptSearchBar = () => {
   };
 
   const handleGptSearchClick = async () => {
+    setIsLoading(true);
     console.log(searchText.current.value);
     // Make an API call to GPT and get Movie Results
 
@@ -33,9 +35,10 @@ const GptSearchBar = () => {
       messages: [{ role: "user", content: gptQuery }],
       model: "gpt-3.5-turbo",
     });
+    setIsLoading(false);
 
     if (!gptResults.choices) {
-      // TODO: Write Error Handling
+      // Handle error or show a message
     }
     console.log(gptResults.choices?.[0]?.message?.content);
 
@@ -62,11 +65,18 @@ const GptSearchBar = () => {
           placeholder={lang[langKey].gptSearchPlaceholder}
         />
         <button
-          className="text-[13px] md:text-[14px] py-3 md:py-4 w-[100px] font-bold px-4 bg-red-600 text-white cursor-pointer"
+          className="text-[13px] md:text-[14px] w-36 py-3 md:py-4 font-bold px-4 bg-red-600 text-white cursor-pointer"
           onClick={handleGptSearchClick}
           type="button"
         >
-          {lang[langKey].search}
+          {isLoading ? (
+            <div className="flex items-center justify-center gap-1">
+              <span>Searching</span>
+              <span className="loading loading-spinner loading-sm"></span>
+            </div>
+          ) : (
+            lang[langKey].search
+          )}
         </button>
       </form>
     </div>

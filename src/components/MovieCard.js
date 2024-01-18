@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import { IMG_CDN_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 
+const Shimmer = () => (
+  <div className="shimmer-wrapper">
+    <div className="shimmer bg-shimmer-wave"></div>
+  </div>
+);
+
 const MovieCard = ({ posterPath, id }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   if (!posterPath) return null;
-
-  const handleHover = () => {
-    setIsHovered(true);
-  };
-
-  const handleLeave = () => {
-    setIsHovered(false);
-  };
 
   return (
     <Link
@@ -22,14 +18,17 @@ const MovieCard = ({ posterPath, id }) => {
       }}
     >
       <div
-        className={`w-44 mr-12 transition-all duration-200 shadow-2xl ${
-          isHovered ? "hover:scale-110" : ""
-        }`}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleLeave}
+        className={`w-44 h-52 mr-12 hover:scale-110 transition-all duration-200 shadow-2xl 
+          // isHovered ? "hover:scale-110" : ""
+        `}
+        // onMouseEnter={handleHover}
+        // onMouseLeave={handleLeave}
       >
-        <img src={IMG_CDN_URL + posterPath} alt="Movie Card" />
-        {/* <p>{id}</p> test */}
+        {posterPath ? (
+          <img src={IMG_CDN_URL + posterPath} alt="Movie Card" />
+        ) : (
+          <Shimmer />
+        )}
       </div>
     </Link>
   );

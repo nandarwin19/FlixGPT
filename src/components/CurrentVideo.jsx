@@ -27,7 +27,7 @@ const CurrentVideo = () => {
   console.log(movieDetails);
 
   return (
-    <div className="relative p-4 px-8 min-h-screen bg-[#0f0f0f] w-full text-white">
+    <div className="relative -mt-8 p-4 px-8 min-h-screen bg-[#0f0f0f] w-full text-white">
       {movieDetails ? (
         <div className="container mx-auto mt-8">
           <div className="flex flex-col lg:flex-row justify-between w-full mt-8">
@@ -44,7 +44,7 @@ const CurrentVideo = () => {
                 <img
                   src={IMG_CDN_URL + movieDetails.poster_path}
                   alt={movieDetails.title}
-                  className="w-full h-[380px] shadow-2xl object-cover mr-4"
+                  className="w-full h-[380px] shadow-2xl object-fill mr-4"
                 />
               </div>
             </div>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import logo from "./../utils/logo.png";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,6 +17,17 @@ const Header = () => {
   const dispatch = useDispatch();
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const popoverBox = useSelector((store) => store.signout.popoverBox);
+  const [headerBackground, setHeaderBackground] = useState(false);
+
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setHeaderBackground(true);
+    } else {
+      setHeaderBackground(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeBackground);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -66,10 +76,16 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full fixed  top-0 z-50 p-4 lg:p-0">
+    <div
+      className={`${
+        headerBackground ? "header-active" : "bg-none"
+      } w-full fixed top-0 z-50 p-4 lg:p-0`}
+    >
       <div className=" max-container flex items-center justify-between">
         <Link to="/browse">
-          <img src={logo} alt="" className="w-18 h-8 lg:w-48 lg:h-18" />
+          <p className="text-xl logo md:text-3xl text-red-700 font-bold">
+            NextflixGPT
+          </p>
         </Link>
 
         <div className="flex gap-4">
@@ -87,9 +103,9 @@ const Header = () => {
           )}
           <button
             onClick={handleGptSearchClick}
-            className="w-18 p-1 lg:px-3 lg:py-2 bg-red-600 rounded text-white cursor-pointer"
+            className="w-24 md:w-28 h-10 md:h-12 bg-red-600 rounded text-white cursor-pointer"
           >
-            <p className="text-[12px] lg:text-[16px]">
+            <p className="text-[13px] lg:text-[16px]">
               {showGptSearch ? (
                 "Homepage"
               ) : (

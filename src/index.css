@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,10 +9,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: Inter;
+  overflow-x: hidden;
+}
+
+/* .logo {
+  font-family: "Rubik Mono One", monospace;
+} */
+
+body {
+  /* font-family: Inter; */
+  font-family: "Share Tech Mono", monospace;
 }
 
 .login-bg {
@@ -41,6 +52,77 @@ body {
   justify-content: center;
 }
 
-/* .bg-header {
-  background-color: #ffffff7b;
-} */
+.shimmer-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer {
+  height: 13rem;
+  width: 11rem;
+  background-color: #282727bc;
+  animation-duration: 3.8s;
+  animation-iteration-count: infinite;
+  animation-name: shimmerAnimation;
+  animation-timing-function: ease-in-out;
+}
+
+.bg-shimmer-wave {
+  animation-duration: 3.8s;
+  background-color: #141414;
+  -webkit-mask-image: linear-gradient(
+    130deg,
+    #000 55%,
+    rgba(0, 0, 0, 0.8) 75%,
+    #000 95%
+  );
+  mask-image: linear-gradient(
+    130deg,
+    #000 55%,
+    rgba(0, 0, 0, 0.8) 75%,
+    #000 95%
+  );
+  -webkit-mask-size: 200% 100%;
+  mask-size: 200% 100%;
+  -webkit-animation: placeholder-wave 2s linear infinite;
+  animation: wave 2s linear infinite;
+}
+
+@keyframes wave {
+  100% {
+    mask-position: -200% 0%;
+  }
+}
+
+@keyframes shimmerAnimation {
+  0% {
+    background-color: #1a1a1a;
+  }
+
+  25% {
+    background-color: #363434;
+  }
+
+  50% {
+    background-color: #1a1a1a;
+  }
+
+  100% {
+    background-color: #1a1a1a;
+  }
+}
+
+.gpt-background {
+  width: 100vw;
+  height: 180vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(9, 9, 9, 0.895)),
+    url("https://assets.nflxext.com/ffe/siteui/vlv3/ca6a7616-0acb-4bc5-be25-c4deef0419a7/90e66629-1911-451d-aa9c-5406ed962c45/MM-en-20231211-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+}
+
+.header-active {
+  background: #000000ba;
+}
