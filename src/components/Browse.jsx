@@ -18,7 +18,7 @@ const Browse = () => {
   useUpcomingMovies();
 
   return (
-    <div className="">
+    <div>
       <Header />
       {showGptSearch ? (
         <GptSearch />

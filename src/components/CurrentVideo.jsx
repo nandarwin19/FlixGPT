@@ -27,7 +27,7 @@ const CurrentVideo = () => {
   console.log(movieDetails);
 
   return (
-    <div className="relative -mt-8 p-4 px-8 min-h-screen bg-[#0f0f0f] w-full text-white">
+    <div className="relative  p-4 px-8 min-h-screen bg-[#0f0f0f] w-full text-white">
       {movieDetails ? (
         <div className="container mx-auto mt-8">
           <div className="flex flex-col lg:flex-row justify-between w-full mt-8">

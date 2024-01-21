@@ -99,9 +99,9 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen w-screen">
       <Header />
-      <div className="login-bg flex items-center justify-center">
+      <div className="bg-[#0f0f0f] min-h-screen min-w-full flex items-center justify-center">
         <form
           onSubmit={formHandle}
           className="max-w-sm h-auto bg-black/70 text-white p-12 gap-8 flex flex-col"

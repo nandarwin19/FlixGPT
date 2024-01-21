@@ -83,7 +83,7 @@ const Header = () => {
     >
       <div className=" max-container flex items-center justify-between">
         <Link to="/browse">
-          <p className="text-xl logo md:text-3xl text-red-700 font-bold">
+          <p className="text-[24px] logo md:text-3xl text-red-700 font-bold">
             NextflixGPT
           </p>
         </Link>
@@ -91,7 +91,7 @@ const Header = () => {
         <div className="flex gap-4">
           {showGptSearch && (
             <select
-              className="p-1 text-[11px] hidden md:flex md:p-2 md:text-[14px] bg-white text-black"
+              className="p-1 text-[12px] hidden md:flex md:p-2 md:text-[14px] bg-white text-black"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -105,7 +105,7 @@ const Header = () => {
             onClick={handleGptSearchClick}
             className="w-24 md:w-28 h-10 md:h-12 bg-red-600 rounded text-white cursor-pointer"
           >
-            <p className="text-[13px] lg:text-[16px]">
+            <p className="text-[15px] lg:text-lg">
               {showGptSearch ? (
                 "Homepage"
               ) : (
