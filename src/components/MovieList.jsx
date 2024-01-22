@@ -1,7 +1,7 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 
-const Shimmer = () => (
+const Shimmer = ({ movieLists }) => (
   <div className="shimmer-wrapper flex">
     <div className="shimmer bg-shimmer mr-12"></div>
     <div className="shimmer bg-shimmer mr-12"></div>

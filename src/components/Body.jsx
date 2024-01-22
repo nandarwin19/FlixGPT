@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./Login";
 import Browse from "./Browse";
 import CurrentVideo from "./CurrentVideo";
+import Playing from "./Playing";
 const Body = () => {
   const appRouter = createBrowserRouter([
     {
@@ -17,6 +18,7 @@ const Body = () => {
       path: "/browse/:id", // Added parameter :id
       element: <CurrentVideo />,
     },
+    { path: "/browse/playing", element: <Playing /> },
   ]);
 
   return (

@@ -2,16 +2,13 @@
 
 # Netflix GPT
 
-- Login Form
-- Sign Up
-- Form Validation
-- useRef Hook
-- Firebase Setup
-- Custom Hook for Now Playing Movies
-- Create slice, store
-- Update Store with new Data
-- Multi-language Features in app
-- Ingegrate GPT API
+- Login form with Firebase authentication and form validation
+- Utilization of useRef and custom hooks
+- Redux for state management
+- Multi-language support
+- Integration of GPT API
+- Generation of 5 movie suggestions using GPT API
+- API data fetching
 
 # Features
 

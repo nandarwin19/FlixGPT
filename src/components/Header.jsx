@@ -10,6 +10,7 @@ import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
 import { togglePopover } from "../utils/signoutSlice";
 import { IoSearch } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -81,7 +82,7 @@ const Header = () => {
         headerBackground ? "header-active" : "bg-none"
       } w-full fixed top-0 z-50 p-4 lg:p-0`}
     >
-      <div className=" max-container flex items-center justify-between">
+      <div className="mx-auto max-w-[1440px] sm:py-6 py-3 flex items-center justify-between">
         <Link to="/browse">
           <p className="text-[24px] logo md:text-3xl text-red-700 font-bold">
             NextflixGPT
@@ -126,12 +127,17 @@ const Header = () => {
               />
             )}
             {popoverBox && (
-              <button
-                onClick={handleSignOut}
-                className="absolute cursor-pointer font-bold text-black w-44 shadow-2xl h-24 mr-2 bg-white rounded-xl top-0 -left-44"
-              >
-                Sign Out
-              </button>
+              <div className="gap-2 flex flex-col absolute cursor-pointer font-bold text-white/90 py-8 px-8 w-52 shadow-2xl h-28 mr-2 bg-[#333030] rounded-md top-0 -left-52">
+                <div className="w-full flex items-center justify-between">
+                  <FaUser />
+                  <p>nwin</p>
+                </div>
+                <div className="border-b-[1px] border-[#757575]"></div>
+
+                <button onClick={handleSignOut} className="">
+                  Sign Out
+                </button>
+              </div>
             )}
           </div>
         </div>
