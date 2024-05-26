@@ -1,0 +1,5 @@
+# CineLux
+
+```bash
+eslint --init
+```
