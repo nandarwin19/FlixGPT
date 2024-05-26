@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import appStore from "./utils/appStore";
@@ -34,15 +35,28 @@ const appRouter = createBrowserRouter([
     ],
   },
 ]);
+=======
+import "./App.css";
+import "./index.css";
+import Body from "./components/Body.jsx";
+import {Provider} from "react-redux"
+import appStore from "./utils/appStore.js";
+>>>>>>> a97b99f9e9b53f85a0dfe540ec605f2598d9256e
 
 function App() {
   return (
     <Provider store={appStore}>
+<<<<<<< HEAD
       <AuthProvider>
         <RouterProvider router={appRouter} />
       </AuthProvider>
     </Provider>
   );
+=======
+      <Body/>
+    </Provider>
+  )
+>>>>>>> a97b99f9e9b53f85a0dfe540ec605f2598d9256e
 }
 
 export default App;

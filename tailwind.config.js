@@ -10,5 +10,9 @@ module.exports = {
       },
     },
   },
+<<<<<<< HEAD
   plugins: [],
+=======
+  plugins: [require("daisyui")],
+>>>>>>> a97b99f9e9b53f85a0dfe540ec605f2598d9256e
 };
