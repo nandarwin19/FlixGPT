@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import  { useEffect } from "react";
-=======
-import React, { useEffect } from "react";
->>>>>>> a97b99f9e9b53f85a0dfe540ec605f2598d9256e
 import { API_OPTIONS } from "../utils/constants";
 import { addPopularMovies } from "../utils/movieSlice";
 import { useDispatch } from "react-redux";
