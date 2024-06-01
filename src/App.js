@@ -6,8 +6,8 @@ import Login from "./components/login/Login";
 import Browse from "./components/browse/Browse";
 import TvShow from "./components/tvShow/TvShow";
 
-import CurrentVideo from "./components/common/CurrentVideo";
-import Playing from "./components/common/Playing";
+import CurrentVideo from "./components/videoInfo/CurrentVideo";
+import Playing from "./components/playing/Playing";
 import Layout from "./Layout";
 import TrendingPopular from "./components/trendingPopular/TrendingPopular";
 import SearchPage from "./components/search/SearchPage";
