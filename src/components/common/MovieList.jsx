@@ -32,7 +32,15 @@ const MovieList = ({ title, movieLists }) => {
       <h1 className="text-2xl md:text-3xl py-6 font-bold underline">{title}</h1>
       <div className="">
         {!movieLists ? (
-          <p>shimmer</p>
+          <div className="shimmer-wrapper flex justify-between">
+            <div className="shimmer hidden  md:flex  bg-shimmer-wave"></div>
+            <div className="shimmer hidden lg:flex bg-shimmer-wave"></div>
+            <div className="shimmer hidden xl:flex bg-shimmer-wave"></div>
+            <div className="shimmer hidden sm:flex bg-shimmer-wave"></div>
+            <div className="shimmer hidden bg-shimmer-wave"></div>
+            <div className="shimmer bg-shimmer-wave"></div>
+            <div className="shimmer bg-shimmer-wave"></div>
+          </div>
         ) : (
           <div className="flex">
             <Swiper

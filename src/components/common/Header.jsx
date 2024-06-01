@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { addUsers, removeUsers } from "../../utils/userSlice";
 import { useDispatch } from "react-redux";
-import { toggleGptSearchView } from "../../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../../utils/constants";
 import { changeLanguage } from "../../utils/configSlice";
 import { togglePopover } from "../../utils/signoutSlice";
@@ -134,10 +133,6 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleGptSearchClick = () => {
-    // Toggle GPT Search
-    dispatch(toggleGptSearchView());
-  };
 
   const handleLanguageChange = (e) => {
     // console.log(e.target.value);
@@ -181,7 +176,6 @@ const Header = () => {
           )}
           <Link
             to="/search"
-            onClick={handleGptSearchClick}
             className="w-24 md:w-28 flex items-center justify-center h-10 md:h-12 bg-red-600 rounded text-white cursor-pointer"
           >
             <div className="text-[15px] lg:text-lg flex items-center justify-center gap-2">

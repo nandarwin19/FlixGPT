@@ -3,7 +3,13 @@ import GptSearchBar from "./GptSearchBar";
 
 const SearchPage = () => {
   return (
-    <div className="bg-[#0f0f0f] min-h-screen w-full">
+    <div
+      style={{
+        backgroundImage: `url(${"/bg.png"})`,
+        backgroundSize: "cover",
+      }}
+      className=" min-h-screen w-full"
+    >
       <GptSearchBar />
       <GptMovieSuggestion />
     </div>

@@ -19,10 +19,8 @@ const MovieCard = ({ posterPath, id }) => {
     >
       <div
         className={`w-44 h-52 mr-12 hover:scale-110 transition-all duration-200 shadow-2xl 
-          // isHovered ? "hover:scale-110" : ""
+           isHovered ? "hover:scale-110" : ""
         `}
-        // onMouseEnter={handleHover}
-        // onMouseLeave={handleLeave}
       >
         {posterPath ? (
           <img src={IMG_CDN_URL + posterPath} alt="Movie Card" />
