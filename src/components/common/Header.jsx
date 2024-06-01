@@ -131,8 +131,7 @@ const Header = () => {
 
     // Unsubscribe when component unmounts
     return () => unsubscribe();
-  }, []);
-
+  }, [dispatch, navigate]);
 
   const handleLanguageChange = (e) => {
     // console.log(e.target.value);
